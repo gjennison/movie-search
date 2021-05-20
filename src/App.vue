@@ -1,16 +1,16 @@
 <template>
-    <div id="app" class="has-text-white">
-        <input class="has-text-white is-size-3" placeholder="enter film" type="text" v-model="title" @keyup="request"/>
+    <div id="app">
+        <input placeholder="enter film" type="text" v-model="title" @keyup="request"/>
 
-        <section class="container">
-            <div class="container columns is-multiline">
-                <div class="column is-one-fifth-desktop is-one-third-tablet is-full-mobile" v-for="movie in movies" :key="movie.imdbID">
-                    {{movie.title}}
-                    <br>
-                    <img :src="returnImgPath(movie.poster_path)">
-                </div>
+        <div class="columns">
+            <div class="column" v-for="movie in movies" :key="movie.imdbID">
+                <h3>
+                {{movie.title}}
+                </h3>
+                <img v-if="returnImgPath(movie.poster_path) != 'null'" :src="returnImgPath(movie.poster_path)">
+                <p v-if="returnImgPath(movie.poster_path) === 'null'"><i>missing image</i></p>
             </div>
-        </section>
+        </div>
     </div>
 </template>
 
@@ -43,7 +43,7 @@ export default {
 
         returnImgPath: function(path){
             if(path === null){
-                return "img/logo.82b9c7a5.png"
+                return "null"
             }
             else
                 return "https://image.tmdb.org/t/p/w185" + path;
@@ -60,5 +60,21 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.columns{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.column{
+  background: #B7CECE;
+  margin: 24px;
+}
+
+img{
+  width: 185px;
+  height: 256px;
+  margin-bottom: 24px;
 }
 </style>
