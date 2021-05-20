@@ -62,14 +62,42 @@ export default {
   margin-top: 60px;
 }
 
+
 .columns{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  margin: auto;
+  max-width: 1250px;
+  /* justify-items: center; */
+  /* align-items: center; */
 }
 
+@media screen and (min-width: 500px) {
+  #app{
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media screen and (min-width: 760px) {
+  #app{
+    margin: auto;
+  }
+  .columns{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 920px) {
+  .columns{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
 .column{
   background: #B7CECE;
   margin: 24px;
+  /* margin-left: auto; */
+  /* max-width: 500px; */
 }
 
 img{
